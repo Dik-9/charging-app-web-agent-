@@ -1,0 +1,140 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/scanCharging/scanCharging",
+			"style": {
+				"navigationBarTitleText": "扫码充电",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/me/me",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/nearbyStation/nearbyStation",
+			"style": {
+				"navigationBarTitleText": "附近充电站",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/stationList/stationList",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/stationDetail/stationDetail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/chargingProgress/chargingProgress",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/order-detail/order-detail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/message/message",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	    ,{
+            "path" : "pages/myWallet/myWallet",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/vehicle-bind/vehicle-bind",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/service/service",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+	"tabBar": {
+		"color": "#7A7E83", //字体颜色
+		"selectedColor": "#007AFF", //选中时字体颜色
+		"borderStyle": "black", //底部的上边框线条
+		"backgroundColor": "#F8F8F8", //底部背景色
+		"fontSize": "12px", //字体大小
+		"spacing": "5px", //字体到图标的距离
+		"height": "50px", //底部高
+		"list": [{
+				"pagePath": "pages/nearbyStation/nearbyStation",
+				"text": "附近电桩",
+				"iconPath": "static/nearby_normal@2x.png", //未选中时图片样式
+				"selectedIconPath": "static/nearby_selected@2x.png" //选中时图片样式
+			}, {
+				"pagePath": "pages/scanCharging/scanCharging",
+				"text": "扫码充电",
+				"iconPath": "static/scan_normal@2x.png",
+				"selectedIconPath": "static/scan_selected@2x.png"
+			},
+			{
+				"pagePath": "pages/message/message",
+				"text": "消息通知",
+				"iconPath": "static/message_normal@2x.png", //未选中时图片样式
+				"selectedIconPath": "static/message_selected@2x.png" //选中时图片样式
+			},
+			{
+				"pagePath": "pages/service/service",
+				"text": "生活服务",
+				"iconPath": "static/service.png", //未选中时图片样式
+				"selectedIconPath": "static/service.png" //选中时图片样式
+			},
+
+			{
+				"pagePath": "pages/me/me",
+				"text": "我的",
+				"iconPath": "static/me-normal@2x.png",
+				"selectedIconPath": "static/me-selected@2x.png"
+			}
+
+		]
+	}
+}
