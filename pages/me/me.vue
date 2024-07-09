@@ -83,7 +83,7 @@
 						success:(res)=>{
 							console.log(res)
 							let code=res.code
-							let url=this.$baseUrl+"/userServiceApi/wx/login?code="+code+"&nickName="+this.nickName
+							let url=this.$baseUrl+"/user_api/wx/login?code="+code+"&nickName="+this.nickName
 							uni.request({
 								url:url,
 								success: (res) => {
