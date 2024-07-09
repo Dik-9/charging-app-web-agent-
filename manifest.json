@@ -54,7 +54,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wx8eaf92163f074ad1",
+        "appid" : "wxf7546f9b87546078",
         "setting" : {
             "urlCheck" : false
         },
@@ -83,7 +83,7 @@
         "sdkConfigs" : {
             "maps" : {
                 "qqmap" : {
-                    "key" : "O2WBZ-PEFED-YAI4E-HCGHN-GJT5H-EGFOI"
+                    "key" : "WB3BZ-3XPCM-PXG65-6JF7N-G77CZ-TDB4A"
                 }
             }
         }

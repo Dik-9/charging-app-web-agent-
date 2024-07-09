@@ -101,8 +101,8 @@
 			getNearbyStation: function() {
 				//debugger
 				//把地址写死了，定位到别的城市没有充电站
-				this.latitude = 39.909
-				this.longitude = 116.39742
+				this.latitude = 39.908663
+				this.longitude = 116.398476
 
 				let data = {
 					longitude: this.longitude,
@@ -110,7 +110,7 @@
 					radius: 5000
 				}
 				uni.request({
-					url: this.$baseUrl+"/deviceServiceApi/charge/station/selectNearbyStation",
+					url: this.$baseUrl+"/device_api/device/station/near/",
 					method: "GET",
 					data: data,
 					success: (res) => {
@@ -118,13 +118,13 @@
 						this.stationList = res.data.data
 						//debugger
 						for (let i = 0; i < this.stationList.length; i++) {
-							//console.log(i)
+							console.log(i)
 							let station = this.stationList[i]
 							//不指定id 单击事件不执行
 							let marker = {
 								id: i,
-								latitude: station.stationLat,
-								longitude: station.stationLng,
+								latitude: station.longitude,
+								longitude: station.latitude,
 								iconPath: '/static/map_marker@2x.png'
 							}
 							this.covers.push(marker)

@@ -4,8 +4,8 @@ import App from './App'
 import Vue from 'vue'
 //增加全局常量，程序运行在微信上，服务器地址不能使用localhost，127.0.0.1
 //baseUrl的值是gateway网关的地址
-Vue.prototype.$baseUrl="http://192.168.66.56:8081"
-Vue.prototype.$wsUrl="ws://192.168.66.56:8081"
+Vue.prototype.$baseUrl="http://172.40.0.177:5050"
+Vue.prototype.$wsUrl="ws://172.40.0.177:5050"
 //Vue.prototype.messageList=[]
 Vue.config.productionTip = false
 App.mpType = 'app'
