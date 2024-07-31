@@ -140,7 +140,7 @@
 		methods: {
 			getStation(stationId){
 				uni.request({
-					url: this.$baseUrl+"/deviceServiceApi/charge/station/" + stationId,
+					url: this.$baseUrl+"/device_api/device/station/detail/" + stationId,
 					method: 'GET',
 					success: (res) => {
 						//debugger

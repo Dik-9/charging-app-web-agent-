@@ -19,7 +19,7 @@
 					<view class="row">
 						<image class="map-icon" src="../../static/nearby_normal@2x.png"></image>
 						<text class="distance-color">{{mapClickStation.distance}}KM</text>
-						<view class="go-charging" @click="stationClick(mapClickStation.id)">详情</view>
+						<view class="go-charging" @click="stationClick(mapClickStation.stationId)">详情</view>
 					</view>
 				</view>
 
@@ -123,8 +123,8 @@
 							//不指定id 单击事件不执行
 							let marker = {
 								id: i,
-								latitude: station.longitude,
-								longitude: station.latitude,
+								latitude: station.latitude,
+								longitude: station.longitude,
 								iconPath: '/static/map_marker@2x.png'
 							}
 							this.covers.push(marker)
