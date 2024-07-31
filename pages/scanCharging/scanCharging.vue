@@ -40,9 +40,8 @@
 						userId: userId
 					}
 					uni.request({
-						url: this.$baseUrl + "/userServiceApi/charge/user/getBalance",
-						method: "POST",
-						data: requestData,
+						url: this.$baseUrl + "/user_api/user/balance/" + userId,
+						method: "GET",
 						success: (res) => {
 							//debugger
 							let balance = res.data.data
@@ -127,8 +126,8 @@
 				}
 				//debugger
 				uni.request({
-					url: this.$baseUrl + "/billServiceApi/charge/ChargingBill/createBill",
-					method: "GET",
+					url: this.$baseUrl + "/order_api/order/create",
+					method: "POST",
 					data: billParam,
 					success: (res) => {
 						//debugger
