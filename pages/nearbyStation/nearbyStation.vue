@@ -114,6 +114,7 @@
 					method: "GET",
 					data: data,
 					success: (res) => {
+						console.log("附近充电站响应:"+res)
 						console.log(res)
 						this.stationList = res.data.data
 						//debugger
@@ -123,8 +124,8 @@
 							//不指定id 单击事件不执行
 							let marker = {
 								id: i,
-								latitude: station.latitude,
-								longitude: station.longitude,
+								latitude: station.stationLat,
+								longitude: station.stationLng,
 								iconPath: '/static/map_marker@2x.png'
 							}
 							this.covers.push(marker)

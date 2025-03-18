@@ -103,7 +103,7 @@
 		methods: {
 			createWebSocketConnection: function() {
 
-				let url = this.$wsUrl + "/billServiceApi/imserver/" + this.userId
+				let url = this.$wsUrl + "/ws/server/" + this.userId
 
 				console.log("websockerUrl=" + url)
 				this.socketTask1 = uni.connectSocket({
@@ -128,6 +128,7 @@
 					// 注：只有连接正常打开中 ，才能正常收到消息
 					this.socketTask1.onMessage((res) => {
 						//debugger
+						console.log("这里是开始接收后端反馈信息")
 						console.log(res)
 						let data = res.data
 						let websocketMessage = JSON.parse(data)
