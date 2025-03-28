@@ -51,7 +51,7 @@
                 "ad" : {},
                 "oauth" : {
                     "weixin" : {
-                        "appid" : "微信APPID",
+                        "appid" : "wx2623426f2a09728c",
                         "UniversalLinks" : ""
                     }
                 }
@@ -62,7 +62,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "微信APPID",
+        "appid" : "wx2623426f2a09728c",
         "setting" : {
             "urlCheck" : false
         },
@@ -91,7 +91,7 @@
         "sdkConfigs" : {
             "maps" : {
                 "qqmap" : {
-                    "key" : "申请的腾讯位置服务KEY"
+                    "key" : "WD4BZ-D7NCN-TLSFD-SHMQ2-YX4ST-B5FTF"
                 }
             }
         }

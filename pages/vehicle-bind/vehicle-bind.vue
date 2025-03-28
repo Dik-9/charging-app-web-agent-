@@ -1,23 +1,25 @@
 <template>
-	<view>
-		<view class="row">
-			<text class="title" style="margin-right: 48rpx;">车牌号</text>
-			<input class="input-border" v-model="license" />
+	<view class="container">
+		<view class="form-item">
+			<text class="form-label">车牌号</text>
+			<input class="form-input" v-model="license" placeholder="请输入车牌号" />
 		</view>
-		<view class="row">
-			<text class="title" style="margin-right: 48rpx;">品牌</text>
-			<input class="input-border" v-model="brand" />
+		<view class="form-item">
+			<text class="form-label">品牌</text>
+			<input class="form-input" v-model="brand" placeholder="请输入车辆品牌" />
 		</view>
-		<view class="row">
-			<text class="title" style="margin-right: 48rpx;">型号</text>
-			<input class="input-border" v-model="model" />
+		<view class="form-item">
+			<text class="form-label">型号</text>
+			<input class="form-input" v-model="model" placeholder="请输入车辆型号" />
 		</view>
-		<view class="row">
-			<text class="title" style="margin-right: 48rpx;">车架号</text>
-			<input class="input-border" v-model="vin" />
+		<view class="form-item">
+			<text class="form-label">车架号</text>
+			<input class="form-input" v-model="vin" placeholder="请输入车架号" />
 		</view>
-		<button class="blue-btn" @click="bind"> 绑定</button>
-		<button class="blue-btn" @click="unbind"> 解绑</button>
+		<view class="button-group">
+			<button class="btn primary" @click="bind">绑定车辆</button>
+			<button class="btn secondary" @click="unbind">解绑车辆</button>
+		</view>
 	</view>
 </template>
 
@@ -42,7 +44,6 @@
 					//debugger
 					let code = res.data.code
 					if (code == 0) {
-
 						this.license = res.data.data.license
 						this.brand = res.data.data.brand
 						this.model = res.data.data.model
@@ -74,14 +75,10 @@
 						}
 					}
 				})
-
-
-
 			},
 			bind: function() { //绑定车辆
 				//debugger
 				let userId = uni.getStorageSync("userId")
-
 				let data = {
 					userId: userId,
 					license: this.license,
@@ -111,30 +108,68 @@
 </script>
 
 <style>
-	.title {
-		font-size: 32rpx;
-		margin-top: 40rpx;
+	.container {
+		padding: 32rpx;
+		background-color: #f8f8f8;
+		min-height: 100vh;
+	}
+	
+	.form-item {
 		margin-bottom: 40rpx;
-		width: 96rpx;
+		background-color: #fff;
+		border-radius: 12rpx;
+		padding: 24rpx 32rpx;
+		box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
 	}
-
-	.row {
+	
+	.form-label {
+		font-size: 30rpx;
+		color: #333;
+		display: block;
+		margin-bottom: 16rpx;
+		font-weight: 500;
+	}
+	
+	.form-input {
+		height: 80rpx;
+		font-size: 28rpx;
+		border: 1rpx solid #e5e5e5;
+		border-radius: 8rpx;
+		padding: 0 20rpx;
+		background-color: #f9f9f9;
+	}
+	
+	.button-group {
+		margin-top: 60rpx;
 		display: flex;
-		flex-direction: row;
-		align-items: center;
+		flex-direction: column;
+		gap: 24rpx;
 	}
-
-	.input-border {
-		border: 1px solid #999999;
-		padding: 24rpx;
-	}
-
-	.blue-btn {
-		background-color: #0091FF;
-		height: 72rpx;
-		border-radius: 4rpx;
-		color: #FFFFFFFF;
+	
+	.btn {
+		height: 88rpx;
+		border-radius: 44rpx;
 		font-size: 32rpx;
-		margin: 24rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: none;
+	}
+	
+	.primary {
+		background-color: #0091FF;
+		color: white;
+	}
+	
+	.secondary {
+		background-color: #f0f0f0;
+		color: #0091FF;
+		border: 1rpx solid #0091FF;
+	}
+	
+	/* 添加点击效果 */
+	.btn:active {
+		opacity: 0.8;
+		transform: scale(0.98);
 	}
 </style>
