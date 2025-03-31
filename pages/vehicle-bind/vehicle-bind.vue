@@ -33,23 +33,29 @@
 				vin: ""
 			}
 		},
+		//页面一加载 直接调用的js代码
 		onShow() {
 			//从存储中取userId
 			let userId = uni.getStorageSync("userId")
 			//联网取用户的车辆信息
 			uni.request({
-				url: this.$baseUrl + "/userServiceApi/getVehicleByUserId/" + userId,
+				url: this.$baseUrl + "/user_api/user/vehicle/binded/" + userId,
 				method: "GET",
 				success: (res) => {
-					//debugger
 					let code = res.data.code
+					//res.data=JsonResult code message data
 					if (code == 0) {
+						//从JsonResult中 拿到data的4个属性
 						this.license = res.data.data.license
 						this.brand = res.data.data.brand
 						this.model = res.data.data.model
 						this.vin = res.data.data.vin
+						//TODO 如果解绑 这些不够 需要 车辆id
+					}else{
+						//提示 车辆该绑定
 					}
-				}
+				},
+				//添加失败fail的逻辑 弹个窗口
 			})
 		},
 		methods: {
