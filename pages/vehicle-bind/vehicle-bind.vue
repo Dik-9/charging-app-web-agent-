@@ -68,7 +68,7 @@
 					vehicleId: vehicleId
 				}
 				uni.request({
-					url: this.$baseUrl + "/userServiceApi/unBind",
+					url: this.$baseUrl + "/user_api/user/vehicle/unbind",
 					method: "GET",
 					data: data,
 					success: (res) => {
@@ -93,7 +93,7 @@
 					vin: this.vin
 				}
 				uni.request({
-					url: this.$baseUrl + "/userServiceApi/insertVehicleBind",
+					url: this.$baseUrl + "/user_api/user/vehicle/bind",
 					method: "POST",
 					data: data,
 					success: (res) => {
