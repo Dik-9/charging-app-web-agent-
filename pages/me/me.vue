@@ -75,7 +75,12 @@
 				}).then(res => {
 					console.log("结果！！！", res.avatarUrl, res.nickName)
 					this.nickName=res.nickName
-					uni.setStorageSync("nickName",this.nickName)
+					let userId=uni.getStorageSync("userId",userId);
+					console.log("获取缓存的userId:",userId)
+					if(userId){
+						uni.setStorageSync("nickName",this.nickName)
+					}
+					
 					
 					//获取code,每次得到的都不一样。
 					wx.login(
@@ -83,7 +88,7 @@
 						success:(res)=>{
 							console.log(res)
 							let code=res.code
-							let url=this.$baseUrl+"/user_api/wx/login?code="+code+"&nickName="+this.nickName
+							let url=this.$baseUrl+"/user_api/user/wx/login?code="+code+"&nickName="+this.nickName
 							uni.request({
 								url:url,
 								success: (res) => {
@@ -91,6 +96,7 @@
 									console.log(res)
 									let userId=res.data.data
 									uni.setStorageSync("userId",userId)
+									uni.setStorageSync("nickName",this.nickName)
 								},
 								fail: (res) => {
 									console.log("服务器端获取openid失败")
