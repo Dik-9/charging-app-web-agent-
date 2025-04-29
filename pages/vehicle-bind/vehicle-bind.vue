@@ -43,13 +43,21 @@
 				method: "GET",
 				success: (res) => {
 					let code = res.data.code
+					let vehicle=res.data.data
 					//res.data=JsonResult code message data
 					if (code == 0) {
 						//从JsonResult中 拿到data的4个属性
-						this.license = res.data.data.license
-						this.brand = res.data.data.brand
-						this.model = res.data.data.model
-						this.vin = res.data.data.vin
+						if(vehicle){
+							this.license = res.data.data.license
+							this.brand = res.data.data.brand
+							this.model = res.data.data.model
+							this.vin = res.data.data.vin
+						}else{
+							uni.showToast({
+								title: "请绑定车辆",
+								icon: "error"
+							});
+						}
 						//TODO 如果解绑 这些不够 需要 车辆id
 					}else{
 						//提示 车辆该绑定

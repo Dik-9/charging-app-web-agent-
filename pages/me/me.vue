@@ -5,15 +5,16 @@
 				<view>
 					<image class="profilePhoto" src="../../static/me-profilePhoto.png"></image>
 				</view>			
-				<view>
-					<text>呢称:{{nickName}}</text>
+				<view class="nickname">
+					<text>昵称: {{nickName}}</text>
+				</view>
+				<view class="logout-btn">
+					<button @click="logout" size="mini" type="warn">退出登录</button>
 				</view>
 			</view>
-			<view v-else>
-				<button @click="getUserInfo" >登录</button>
+			<view v-else class="login-btn">
+				<button @click="getUserInfo" type="primary">登录</button>
 			</view>
-			
-			
 		</view>
 		<uni-list>
 			<uni-list-item thumb="/static/me-point.png" :show-extra-icon="true" showArrow :extra-icon="extraIcon"
@@ -30,7 +31,6 @@
 				title="设置" />
 		</uni-list>
 		<cui-userprofiledialog ref="userProfileDialog" paddingBottom="92rpx"></cui-userprofiledialog>
-
 	</view>
 </template>
 
@@ -43,83 +43,107 @@
 					size: '22',
 					type: 'gear-filled'
 				},
-				nickName:""
+				nickName: "",
+				userId: ""
 			}
 		},
 		onLoad() {
-			let nickName=uni.getStorageSync("nickName")
-			//debugger
-			if (nickName){
-				
-				this.nickName=nickName
-			}
+			this.loadUserInfo();
 		},
 		methods: {
-			"toVehicleBind":function(){
+			loadUserInfo() {
+				this.nickName = uni.getStorageSync("nickName");
+				this.userId = uni.getStorageSync("userId");
+			},
+			logout() {
+				uni.showModal({
+					title: '提示',
+					content: '确定要退出登录吗？',
+					success: (res) => {
+						if (res.confirm) {
+							// 清除本地存储的用户信息
+							uni.removeStorageSync("nickName");
+							uni.removeStorageSync("userId");
+							
+							// 重置页面数据
+							this.nickName = "";
+							this.userId = "";
+							
+							uni.showToast({
+								title: '已退出登录',
+								icon: 'success',
+								duration: 2000
+							});
+						}
+					}
+				});
+			},
+			toVehicleBind() {
 				uni.navigateTo({
 					url:"/pages/vehicle-bind/vehicle-bind"
 				})
 			},
-			"toMyWallet":function(){
+			toMyWallet() {
 				uni.navigateTo({
 					url:"/pages/myWallet/myWallet"
 				})
 			},
-			"getUserInfo": function() {
+			getUserInfo() {
 				this.$refs["userProfileDialog"].show({
 					desc: "",
 					avatarUrl: {
-						requried: false, // 是否必填
-						disable: true, // 是否隐藏
+						requried: false,
+						disable: true,
 					}
 				}).then(res => {
-					console.log("结果！！！", res.avatarUrl, res.nickName)
-					this.nickName=res.nickName
-					let userId=uni.getStorageSync("userId",userId);
-					console.log("获取缓存的userId:",userId)
-					if(userId){
-						uni.setStorageSync("nickName",this.nickName)
+					this.nickName = res.nickName;
+					let userId = uni.getStorageSync("userId");
+					
+					if(userId) {
+						uni.setStorageSync("nickName", this.nickName);
 					}
 					
-					
-					//获取code,每次得到的都不一样。
-					wx.login(
-					{
-						success:(res)=>{
-							console.log(res)
-							let code=res.code
-							let url=this.$baseUrl+"/user_api/user/wx/login?code="+code+"&nickName="+this.nickName
+					wx.login({
+						success: (res) => {
+							let code = res.code;
+							let url = this.$baseUrl + "/user_api/user/wx/login?code=" + code + "&nickName=" + this.nickName;
 							uni.request({
-								url:url,
+								url: url,
 								success: (res) => {
-									console.log("服务器端获取openid成功")
-									console.log(res)
-									let userId=res.data.data
-									uni.setStorageSync("userId",userId)
-									uni.setStorageSync("nickName",this.nickName)
+									let userId = res.data.data;
+									uni.setStorageSync("userId", userId);
+									uni.setStorageSync("nickName", this.nickName);
+									this.userId = userId;
+									
+									uni.showToast({
+										title: '登录成功',
+										icon: 'success',
+										duration: 2000
+									});
 								},
 								fail: (res) => {
-									console.log("服务器端获取openid失败")
-									console.log(res)
+									console.log("服务器端获取openid失败", res);
+									uni.showToast({
+										title: '登录失败',
+										icon: 'none',
+										duration: 2000
+									});
 								}
-							})
+							});
 						},
 						fail: (res) => {
-							console.log("获取id失败",res)
+							console.log("获取id失败", res);
+							uni.showToast({
+								title: '登录失败',
+								icon: 'none',
+								duration: 2000
+							});
 						}
-					}
-					)
-					
+					});
 				}, err => {
-					console.log("取消")
+					console.log("取消");
 				});
-				
-				
-				
-				
-				
-			},			
-
+			}
 		}
 	}
 </script>
@@ -131,11 +155,37 @@
 		align-items: center;
 		justify-content: center;
 		padding: 24rpx;
+		background-color: #f8f8f8;
+		border-radius: 16rpx;
+		margin: 20rpx;
+		box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.1);
 	}
 
 	.profilePhoto {
 		width: 132rpx;
 		height: 132rpx;
 		margin: 48rpx;
+		border-radius: 50%;
+		border: 2rpx solid #eee;
+	}
+	
+	.nickname {
+		margin: 20rpx 0;
+		font-size: 32rpx;
+		color: #333;
+		font-weight: bold;
+	}
+	
+	.login-btn button {
+		width: 200rpx;
+		margin: 30rpx 0;
+	}
+	
+	.logout-btn {
+		margin-top: 20rpx;
+	}
+	
+	.logout-btn button {
+		width: 200rpx;
 	}
 </style>

@@ -89,9 +89,9 @@
 				
 				if (userId) {				
 					uni.request({
-						url: this.$baseUrl + "/userServiceApi/charge/user/" + userId,
+						url: this.$baseUrl + "/user_api/user/balance/" + userId,
 						success: (res) => {
-							if (res.data.code === 200) {
+							if (res.data.code === 0) {
 								this.balance = res.data.data.balance || 0;
 							}
 						},
@@ -151,14 +151,14 @@
 							
 							// 使用uni.request发起充值请求
 							uni.request({
-								url: this.$baseUrl + "/userServiceApi/create",
+								url: this.$baseUrl + "/user_api/user/charge",
 								method: "POST",
 								data: {
 									userId: userId,
 									amount: amount
 								},
 								success: (res) => {
-									if (res.data.code === 200) {
+									if (res.data.code === 0) {
 										// 充值成功
 										this.balance += amount;
 										uni.showToast({
