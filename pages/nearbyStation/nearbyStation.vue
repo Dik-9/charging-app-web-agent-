@@ -110,7 +110,7 @@
 					radius: 5000
 				}
 				uni.request({
-					url: this.$baseUrl+"/device_api/device/station/near/",
+					url: this.$baseUrl+"/device_api/device/station/near",
 					method: "GET",
 					data: data,
 					success: (res) => {
