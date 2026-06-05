@@ -258,13 +258,14 @@
 	.footer {
 		width: 100%;
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
+		align-items: center;
 		box-sizing: border-box;
 		padding: 32rpx;
-		gap: 24rpx;
+		gap: 32rpx;
 
 		.btn {
-			width: 100%;
+			width: 260rpx;
 			height: 88rpx;
 			border-radius: 44rpx;
 			font-size: 32rpx;
