@@ -22,10 +22,12 @@
 					</view>
 				</div>
 
-				<div class="footer">
-					<button class="btn cancel-btn" @click="tapCancel">取消</button>
-					<button formType="submit" class="btn confirm-btn">确认</button>
-				</div>
+				<view class="footer">
+					<view class="button-group">
+						<button class="cancel-btn" @click="tapCancel">取消</button>
+						<button formType="submit" class="confirm-btn">确认</button>
+					</view>
+				</view>
 			</form>
 			<div :style="{height:paddingBottom}"></div>
 			<div class="iphoneX_bottom"></div>
@@ -262,18 +264,22 @@
 		align-items: center;
 		box-sizing: border-box;
 		padding: 32rpx;
-		gap: 32rpx;
+	}
 
-		.btn {
-			width: 260rpx;
-			height: 88rpx;
-			border-radius: 44rpx;
-			font-size: 32rpx;
-			font-weight: 500;
-		}
+	.button-group {
+		display: flex;
+		justify-content: center;
+		gap: 32rpx;
+		width: 100%;
+		max-width: 600rpx;
 	}
 
 	.cancel-btn {
+		flex: 1;
+		height: 88rpx;
+		border-radius: 44rpx;
+		font-size: 32rpx;
+		font-weight: 500;
 		background: #f5f5f5;
 		color: #666;
 		border: none;
@@ -284,6 +290,11 @@
 	}
 
 	.confirm-btn {
+		flex: 1;
+		height: 88rpx;
+		border-radius: 44rpx;
+		font-size: 32rpx;
+		font-weight: 500;
 		background: linear-gradient(135deg, #007AFF 0%, #0055CC 100%);
 		color: #fff;
 		border: none;
@@ -298,11 +309,10 @@
 		position: relative;
 		display: flex;
 		width: 100%;
-		padding: 0;
+		padding: 0 24rpx;
 		align-items: center;
 		background-color: #f8f9fa;
 		border-radius: 16rpx;
-		padding: 0 24rpx;
 		height: 100rpx;
 		margin-bottom: 24rpx;
 	}
