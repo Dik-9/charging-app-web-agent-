@@ -85,7 +85,7 @@
 		</view>
 		<view v-show="showDevice">
 
-			<uni-card v-for="gunInfoVO in gunInfoVOList">
+			<uni-card v-for="(gunInfoVO, index) in gunInfoVOList" :key="index">
 				<view class="row device-view">
 					<view>
 						<image class="device-icon-image" src="/static/detail-device-icon@2x.png"></image>

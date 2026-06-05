@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<uni-list>
-			<block v-for="message in messageList">
+			<block v-for="(message, index) in messageList" :key="index">
 
 				<uni-list-item :title="message.title" :note="message.content" showArrow
 					:thumb="messageIcon[message.type]" thumb-size="lg" />
