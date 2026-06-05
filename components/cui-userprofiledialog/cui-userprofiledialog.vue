@@ -23,10 +23,8 @@
 				</div>
 
 				<div class="footer">
-					<cui-button class="btn" square plain @click="tapCancel">取消</cui-button>
-					<button formType="submit" class="btn" hover-class="hover-btn">
-						<cui-button class="btn" square type="primary">确认</cui-button>
-					</button>
+					<button class="btn cancel-btn" @click="tapCancel">取消</button>
+					<button formType="submit" class="btn confirm-btn">确认</button>
 				</div>
 			</form>
 			<div :style="{height:paddingBottom}"></div>
@@ -235,36 +233,65 @@
 	.header {
 		width: 100%;
 		box-sizing: border-box;
-		padding: 32rpx;
+		padding: 40rpx 32rpx 20rpx;
 		text-align: center;
+		font-size: 36rpx;
+		font-weight: 600;
+		color: #333;
 	}
 
 	.desc {
 		width: 100%;
 		box-sizing: border-box;
 		text-align: center;
-		color: #666;
-		font-size: 22rpx;
+		color: #999;
+		font-size: 26rpx;
+		padding-bottom: 20rpx;
 	}
 
 	.content {
 		width: 100%;
-		padding: 16rpx;
+		padding: 0 32rpx;
 		box-sizing: border-box;
 	}
 
 	.footer {
 		width: 100%;
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		box-sizing: border-box;
+		padding: 32rpx;
+		gap: 24rpx;
 
 		.btn {
 			width: 100%;
+			height: 88rpx;
+			border-radius: 44rpx;
+			font-size: 32rpx;
+			font-weight: 500;
 		}
-
 	}
 
+	.cancel-btn {
+		background: #f5f5f5;
+		color: #666;
+		border: none;
+		
+		&:active {
+			background: #e8e8e8;
+		}
+	}
+
+	.confirm-btn {
+		background: linear-gradient(135deg, #007AFF 0%, #0055CC 100%);
+		color: #fff;
+		border: none;
+		box-shadow: 0 8rpx 20rpx rgba(0, 122, 255, 0.3);
+		
+		&:active {
+			background: linear-gradient(135deg, #0066DD 0%, #0044AA 100%);
+		}
+	}
 
 	.section-line {
 		position: relative;
@@ -272,33 +299,28 @@
 		width: 100%;
 		padding: 0;
 		align-items: center;
-		background-color: white;
+		background-color: #f8f9fa;
+		border-radius: 16rpx;
+		padding: 0 24rpx;
+		height: 100rpx;
+		margin-bottom: 24rpx;
 	}
-
 
 	.section-line-title {
 		font-size: 32rpx;
-		color: #818181;
+		color: #666;
 		width: 120rpx;
 		text-align: right;
-		margin-right: 60rpx;
+		margin-right: 24rpx;
 	}
 
 	.section-line-inputText {
 		font-size: 32rpx;
-		height: 118rpx;
+		height: 100%;
 		text-align: left;
-		line-height: 118rpx;
-	}
-
-	.section-line:nth-child(n+2)::after {
-		content: " ";
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 714rpx;
-		height: 2rpx !important;
-		background-color: #f5f5f5;
+		line-height: 100rpx;
+		background: transparent;
+		flex: 1;
 	}
 
 	.avatar-wrapper {
